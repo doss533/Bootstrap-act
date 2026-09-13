@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divino Tech - Bootstrap 5 Landing Page</title>
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hero-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #618ccc, #22464e);
+            color: rgb(169, 54, 54);
+        }
+
+        [data-bs-theme="dark"] .hero-section {
+            background: linear-gradient(135deg, #7dbbfa, #9bbee2);
+        }
+
+        /* Floating Sections */
+        .floating-section {
+            background-color: #ffffff;
+            border-radius: 1.25rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+            padding: 3rem 2rem;
+        }
+
+        [data-bs-theme="dark"] .floating-section {
+            background-color: #2b3035 !important;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Text Color Swap */
+        .hero-section h1 {
+            color: #212529 !important;
+        }
+
+        [data-bs-theme="dark"] .hero-section h1 {
+            color: #f8f9fa !important;
+        }
+
+        /* Pricing and Contact Dark Mode Overrides */
+        [data-bs-theme="dark"] #pricing.bg-light,
+        [data-bs-theme="dark"] #testimonials.bg-light,
+        [data-bs-theme="dark"] #contact.bg-light {
+            background-color: #212529 !important;
+        }
+
+        [data-bs-theme="dark"] #pricing .card {
+            background-color: #344453 !important;
+            border-color: #495057 !important;
+            color: #f8f9fa !important;
+        }
+
+        [data-bs-theme="dark"] #features .card {
+            background-color: #212529 !important;
+            border-color: #495057 !important;
+            color: #f8f9fa !important;
+        }
+
+        /* Hover Effect for Pricing Cards */
+        #pricing .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #pricing .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+        }
+
+        [data-bs-theme="dark"] #pricing .card:hover {
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5) !important;
+        }
+
+        [data-bs-theme="dark"] #pricing .card-header.bg-white {
+            background-color: #212529 !important;
+            color: #f8f9fa !important;
+            border-bottom-color: #509dea !important;
+        }
+
+        [data-bs-theme="dark"] #pricing .text-muted {
+            color: #509dea !important;
+        }
+
+        /* Footer */
+        footer.bg-dark {
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            border-top: 1px solid transparent;
+        }
+
+        /* Light / White mode: stays fixed black */
+        footer.bg-dark .footer-link {
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        footer.bg-dark .footer-link:hover {
+            color: #509dea !important;
+            transform: translateY(-2px);
+        }
+
+        /* Dark mode: footer changes to a lighter panel color */
+        [data-bs-theme="dark"] footer.bg-dark {
+            background-color: #2b3035 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-bs-theme="dark"] footer.bg-dark .footer-link {
+            color: #509dea !important;
+        }
+
+        [data-bs-theme="dark"] footer.bg-dark .footer-link:hover {
+            color: #7dbbfa !important;
+            transform: translateY(-2px);
+        }
+
+        [data-bs-theme="dark"] footer.bg-dark .footer-copy {
+            color: #adb5bd !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm" id="navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
+                <i class="bi bi-bootstrap text-primary me-2"></i>Barney Tech
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-door me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#features"><i
+                                class="bi bi-stars me-1"></i>Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing"><i class="bi bi-tags me-1"></i>Pricing</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials"><i
+                                class="bi bi-chat-quote me-1"></i>Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact"><i
+                                class="bi bi-envelope me-1"></i>Contact</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-secondary ms-lg-3" id="themeToggle">
+                            <i class="bi bi-moon-fill" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="hero-section text-center" id="home">
+        <div class="container">
+            <span class="badge bg-warning text-dark mb-3">v2.0 Released</span>
+            <h1 class="display-4 fw-bold">Next Generation Solutions</h1>
+            <p class="lead mb-4">Divino Tech is your go-to partner for innovative and reliable web development and IT
+                services. We specialize in creating seamless digital experiences that help your business grow and
+                succeed in the ever-evolving tech landscape.
+            </p>
+            <a href="#contact" id="btnGetStarted" class="btn btn-light btn-lg px-4 me-2"><i
+                    class="bi bi-rocket-fill me-2"></i>Get Started</a>
+            <a href="#features" id="btnLearnMore" class="btn btn-outline-light btn-lg px-4"><i
+                    class="bi bi-info-circle-fill me-2"></i>Learn More</a>
+        </div>
+    </header>
+
+    <section id="features" class="py-5">
+        <div class="container floating-section">
+            <h2 class="text-center mb-5">Why Choose Us</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-speedometer2 text-primary fs-1 mb-3"></i>
+                            <h4 class="card-title">Lightning Fast</h4>
+                            <p class="card-text">Optimized performance ensuring your application runs flawlessly under
+                                any load.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-shield-lock-fill text-success fs-1 mb-3"></i>
+                            <h4 class="card-title">Secure by Design</h4>
+                            <p class="card-text">Enterprise-grade security built into every layer of our infrastructure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-telephone-fill text-info fs-1 mb-3"></i>
+                            <h4 class="card-title">24/7 Support</h4>
+                            <p class="card-text">Our dedicated team is always available to help you succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Table -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container floating-section">
+            <h2 class="text-center mb-5">Pricing</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card text-center shadow-sm">
+                        <div class="card-header bg-white py-3">
+                            <h4 class="fw-normal">Starter</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">₱19<small class="text-muted fw-light">/mo</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>10 users included</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>2 GB of storage</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Email support</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Help center access</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary plan-btn"
+                                data-plan="Starter"><i class="bi bi-person-plus-fill me-2"></i>Sign up for free</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card text-center shadow border-primary">
+                        <div class="card-header py-3 text-white bg-primary border-primary">
+                            <h4 class="fw-normal">Pro</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">₱49<small class="text-muted fw-light">/mo</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>20 users included</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>10 GB of storage</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Priority email support</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Help center access</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-primary plan-btn" data-plan="Pro"><i
+                                    class="bi bi-star-fill me-2"></i>Get
+                                started</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card text-center shadow-sm">
+                        <div class="card-header bg-white py-3">
+                            <h4 class="fw-normal">Enterprise</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">₱99<small class="text-muted fw-light">/mo</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Unlimited users</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>100 GB of storage</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Phone and email support</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Dedicated manager</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-primary plan-btn"
+                                data-plan="Enterprise"><i class="bi bi-building-fill me-2"></i>Contact us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <div class="h-100 floating-section">
+                <h2 class="text-center mb-5">What Our Clients Say</h2>
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner text-center">
+                        <div class="carousel-item active">
+                            <p class="lead font-italic">"Divino Tech transformed our workflow. Highly recommended!"</p>
+                            <h5 class="mt-3 mb-0">Calvin Placio, BSIT-Network Technology Track</h5>
+                            <p class="text-muted">Lead Developer, Code-Smart Solutions</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="lead font-italic">"The best platform we've used in years. Fast and reliable."</p>
+                            <h5 class="mt-3 mb-0">Harrold Evangelista, BSIT-Business Analytics Track</h5>
+                            <p class="text-muted">UI/UX Designer</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="lead font-italic">"Exceptional support and a beautifully designed product."</p>
+                            <h5 class="mt-3 mb-0">Jason Magsino, BSIT-Business Analytics Track and Network Track</h5>
+                            <p class="text-muted">Web Developer, Web Designer</p>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nameInput" class="form-label"><i class="bi bi-person-circle me-1"></i>Full
+                                    Name</label>
+                                <input type="text" class="form-control" id="nameInput" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="emailInput" class="form-label"><i class="bi bi-envelope-at me-1"></i>Email
+                                    Address</label>
+                                <input type="email" class="form-control" id="emailInput" name="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="messageInput" class="form-label"><i
+                                        class="bi bi-chat-text me-1"></i>Message</label>
+                                <textarea class="form-control" id="messageInput" name="message" rows="4"
+                                    required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5"><i
+                                        class="bi bi-send-fill me-2"></i>Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <div class="mb-3">
+                <a href="#" class="footer-link text-white text-decoration-none me-3 fs-5 d-inline-block"><i
+                        class="bi bi-facebook"></i></a>
+                <a href="#" class="footer-link text-white text-decoration-none me-3 fs-5 d-inline-block"><i
+                        class="bi bi-twitter-x"></i></a>
+                <a href="#" class="footer-link text-white text-decoration-none fs-5 d-inline-block"><i
+                        class="bi bi-github"></i></a>
+            </div>
+            <p class="footer-copy mb-0">&copy; 2026 Divino Tech. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+        const navbar = document.getElementById('navbar');
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-bs-theme');
+            if (currentTheme === 'dark') {
+                body.removeAttribute('data-bs-theme');
+                themeIcon.classList.replace('bi-sun-fill', 'bi-moon-fill');
+                navbar.classList.replace('navbar-dark', 'navbar-light');
+                navbar.classList.replace('bg-dark', 'bg-light');
+            } else {
+                body.setAttribute('data-bs-theme', 'dark');
+                themeIcon.classList.replace('bi-moon-fill', 'bi-sun-fill');
+                navbar.classList.replace('navbar-light', 'navbar-dark');
+                navbar.classList.replace('bg-light', 'bg-dark');
+            }
+        });
+
+        // Hero Buttons SweetAlert2
+        const btnGetStarted = document.getElementById('btnGetStarted');
+        if (btnGetStarted) {
+            btnGetStarted.addEventListener('click', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Welcome to Divino Tech!',
+                    text: 'Let\'s build something amazing together.',
+                    icon: 'success',
+                    confirmButtonText: 'Let\'s Go!',
+                    confirmButtonColor: '#0d6efd'
+                }).then(() => {
+                    document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        const btnLearnMore = document.getElementById('btnLearnMore');
+        if (btnLearnMore) {
+            btnLearnMore.addEventListener('click', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Learn More',
+                    text: 'Explore our features below.',
+                    icon: 'info',
+                    confirmButtonText: 'Explore',
+                    confirmButtonColor: '#0d6efd'
+                }).then(() => {
+                    document.querySelector('#features').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Contact Form Submission (SweetAlert2)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your message has been sent successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#0d6efd'
+            });
+            contactForm.reset();
+        });
+
+        // Pricing Plan Buttons (SweetAlert2)
+        const planBtns = document.querySelectorAll('.plan-btn');
+        planBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const planName = btn.getAttribute('data-plan');
+                Swal.fire({
+                    title: `${planName} Plan`,
+                    text: `You selected the ${planName} plan. This feature is coming soon!`,
+                    icon: 'info',
+                    confirmButtonText: 'Got it',
+                    confirmButtonColor: '#0d6efd'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
